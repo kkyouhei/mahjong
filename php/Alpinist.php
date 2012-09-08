@@ -1,9 +1,8 @@
 <?php
 
-require_once "Pai.php";
+require_once "Tile.php";
 
-class Alpinist extends Pai{
-
+class Alpinist extends Tile{
 	private $playerOne = array();
 	private $playerTwo = array();
 
@@ -13,18 +12,18 @@ class Alpinist extends Pai{
 	}
 
 	public function makeHand(){
-		$pai = parent::getPai(); 
-		
+		$tile = parent::getTile(); 
+
 		for($i=0 ; $i<34 ; $i++){
-			$idx = rand(0, count($pai)-1);
-			$aPai = array_splice($pai, $idx, 1); 
-			array_push($this->playerOne, $aPai[0]);
+			$idx = rand(0, count($tile)-1);
+			$aTile = array_splice($tile, $idx, 1); 
+			array_push($this->playerOne, $aTile[0]);
 		}
-		
+
 		for($i=0 ; $i<34 ; $i++){
-			$idx = rand(0, count($pai)-1);
-			$aPai = array_splice($pai, $idx, 1); 
-			array_push($this->playerTwo, $aPai[0]);
+			$idx = rand(0, count($tile)-1);
+			$aTile = array_splice($tile, $idx, 1); 
+			array_push($this->playerTwo, $aTile[0]);
 		}
 		// thank you for http://mastermathematics.blog28.fc2.com/blog-entry-79.html
 	}
@@ -40,3 +39,10 @@ class Alpinist extends Pai{
 	}
 
 }
+
+$tile = new Alpinist();
+$playerOne = $tile->getPlayerTile(1);
+$playerTwo = $tile->getPlayerTile(2);
+// thank you for http://c-brains.jp/blog/wsg/08/05/29-015536.php
+header("Content-type: application/json");
+json_encode($playerOne);
