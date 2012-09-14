@@ -45,4 +45,4 @@ $playerOne = $tile->getPlayerTile(1);
 $playerTwo = $tile->getPlayerTile(2);
 // thank you for http://c-brains.jp/blog/wsg/08/05/29-015536.php
 header("Content-type: application/json");
-json_encode($playerOne);
+echo json_encode($playerOne);
