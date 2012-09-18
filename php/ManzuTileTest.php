@@ -15,15 +15,23 @@ class ManzuTileTest extends PHPUnit_Framework_TestCase
 
 	public function testSetHtmlId_Tile配列の個数が36個？()
 	{
+		// やんちゃ 
+		$reflec = new ReflectionMethod('ManzuTile', 'setHtmlId');
+		$reflec->setAccessible(true);
 		$tile = new ManzuTile();
-		$tile->setHtmlId(TileUtil::getIndexTileIdTail(array()));
+		$reflec->invoke($tile);
+		
 		$this->assertEquals(ManzuTile::MANZU_TILES_COUNT, TileUtil::getIndexTileIdTail($tile->tile));
 	}
 
 	public function testSetHtmlId_Tile配列に正しいIDがセットされてる？()
 	{
+		// やんちゃ 
+		$reflec = new ReflectionMethod('ManzuTile', 'setHtmlId');
+		$reflec->setAccessible(true);
 		$tile = new ManzuTile();
-		$tile->setHtmlId(TileUtil::getIndexTileIdTail(array()));
+		$reflec->invoke($tile);
+
 		$index = TileUtil::getIndexTileIdTail(array()); 
 		for($i=1 ; $i<=ManzuTile::MANZU_TILES_COUNT ; $i++){
 			$this->assertEquals('ma' . $i, $tile->tile[$index]['id']);
@@ -33,8 +41,12 @@ class ManzuTileTest extends PHPUnit_Framework_TestCase
 
 	public function testSetHtmlSrc_Tile配列のsrcの値が正しいか？()
 	{
+		// やんちゃ 
+		$reflec = new ReflectionMethod('ManzuTile', 'setHtmlSrc');
+		$reflec->setAccessible(true);
 		$tile = new ManzuTile();
-		$tile->setHtmlSrc(TileUtil::getIndexTileSrcTail(array()));
+		$reflec->invoke($tile);
+
 		$index = 0;
 		for($i=1 ; $i<5 ; $i++){
 			for($j=1 ; $j<10 ; $j++){

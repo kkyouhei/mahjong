@@ -17,7 +17,7 @@ class ManzuTile extends Tile
 	 */
 	protected function setHtmlId()
 	{
-		for($i=1 ; $i<=self::SUITED_TILES_COUNT ; $i++){
+		for($i=1 ; $i<=self::MANZU_TILES_COUNT ; $i++){
 			$this->tile[TileUtil::getIndexTileIdTail($this->tile)]['id'] =  'ma' . $i; 
 		}
 	}
