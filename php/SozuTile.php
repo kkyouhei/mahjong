@@ -2,19 +2,19 @@
 
 require_once 'Tile.php';
 
-class ManzuTile extends Tile
+class SozuTile extends Tile
 {
-	// 山の中に存在する萬子の枚数
-	const MANZU_TILES_COUNT = 36;
+	// 山の中に存在する索子の枚数
+	const SOZU_TILES_COUNT = 36;
 
-	// 山の中に存在する萬子の1セットの枚数
-	const MANZU_ONE_SET_COUNT = 9;
+	// 山の中に存在する索子の1セットの枚数
+	const SOZU_ONE_SET_COUNT = 9;
 
 	// 牌の配列を保持する変数
 	var $tile;
 
 	/**
-	 * tile配列に萬子をセット
+	 * tile配列に索子をセット
 	 *
 	 * @param $mahjongTableObject 牌を保持する配列 
 	 */
@@ -39,8 +39,8 @@ class ManzuTile extends Tile
 	 */
 	private function setHtmlId()
 	{
-		for($i=1 ; $i<=self::MANZU_TILES_COUNT ; $i++){
-			$this->tile[$this->getIndexTileIdTail($this->tile)]['id'] =  'ma' . $i; 
+		for($i=1 ; $i<=self::SOZU_TILES_COUNT ; $i++){
+			$this->tile[$this->getIndexTileIdTail($this->tile)]['id'] =  'so' . $i; 
 		}
 	}
 
@@ -61,8 +61,8 @@ class ManzuTile extends Tile
 	 */
 	private function oneSetHtmlSrc($setNumber)
 	{
-		for($i=1 ; $i<=self::MANZU_ONE_SET_COUNT ; $i++){
-			$this->tile[$this->getIndexTileSrcTail($this->tile)]['src'] =  'ma' . $setNumber . $i; 
+		for($i=1 ; $i<=self::SOZU_ONE_SET_COUNT ; $i++){
+			$this->tile[$this->getIndexTileSrcTail($this->tile)]['src'] =  'so' . $setNumber . $i; 
 		}
 	}
 }
