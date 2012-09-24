@@ -50,19 +50,17 @@ class SozuTile extends Tile
 	private function setHtmlSrc()
 	{
 		for($i=1 ; $i<5 ; $i++){
-			$this->oneSetHtmlSrc($i); 
+			$this->oneSetHtmlSrc(); 
 		}
 	}
 
 	/**
 	 *	麻雀牌を表示するaタグのSRC属性の値を1セット9枚配列にセット
-	 *
-	 *	@param $setNumber 1~9牌で1セット セット数を保持する変数 
 	 */
-	private function oneSetHtmlSrc($setNumber)
+	private function oneSetHtmlSrc()
 	{
 		for($i=1 ; $i<=self::SOZU_ONE_SET_COUNT ; $i++){
-			$this->tile[$this->getIndexTileSrcTail($this->tile)]['src'] =  'so' . $setNumber . $i; 
+			$this->tile[$this->getIndexTileSrcTail($this->tile)]['src'] =  'so' . $i; 
 		}
 	}
 }

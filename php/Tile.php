@@ -1,8 +1,21 @@
 <?php
+
+require_once "ManzuTile.php";
+require_once "PinzuTile.php";
+require_once "SozuTile.php";
+require_once "ZihaiTile.php";
+
 class Tile
 {
 	// 牌の総数
 	const TILES_COUNT = 136;
+
+	function __construct($mahjongTableObject){
+		new ManzuTile($mahjongTableObject);
+		new PinzuTile($mahjongTableObject);
+		new SozuTile($mahjongTableObject);
+		new ZihaiTile($mahjongTableObject);
+	}
 
 	/**
 	 * 配列に追加を開始する添字を返す

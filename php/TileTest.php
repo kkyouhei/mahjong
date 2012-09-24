@@ -1,6 +1,7 @@
 <?php
 
 require_once 'PHPUnit/Autoload.php';
+require_once 'MahjongTable.php';
 require_once 'Tile.php';
 
 class TileTest extends PHPUnit_Framework_TestCase
@@ -8,7 +9,7 @@ class TileTest extends PHPUnit_Framework_TestCase
 	public function testGetIndexTileIdTail_追加を開始する添字がreturnされてる？()
 	{
 		$tile = array();
-		$tileObject = new Tile();
+		$tileObject = new Tile(new MahjongTable());
 		$this->assertEquals(0, $tileObject->getIndexTileIdTail($tile));
 		$tile[0] = array('id'=>'ma1');
 		$tile[1] = array('id'=>'ma2');
@@ -25,7 +26,7 @@ class TileTest extends PHPUnit_Framework_TestCase
 	public function testGetIndexTileSrcTail_追加を開始する添字がreturnされてる？()
 	{
 		$tile = array();
-		$tileObject = new Tile();
+		$tileObject = new Tile(new MahjongTable());
 		$this->assertEquals(0, $tileObject->getIndexTileSrcTail($tile));
 		$tile[0] = array('src'=>'ma1');
 		$tile[1] = array('src'=>'ma2');

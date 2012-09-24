@@ -1,12 +1,9 @@
 <?php
 
 require_once "Tile.php";
-require_once "ManzuTile.php";
-require_once "PinzuTile.php";
-require_once "SozuTile.php";
-require_once "ZihaiTile.php";
 
-class MahjongTable{
+class MahjongTable
+{
 	private $playerOne = array();
 	private $playerTwo = array();
 
@@ -14,10 +11,7 @@ class MahjongTable{
 	var $tile = array();
 
 	function __construct(){
-		new ManzuTile($this);
-		new PinzuTile($this);
-		new SozuTile($this);
-		new ZihaiTile($this);
+		new Tile($this);
 	}
 
 	public function makeHand(){
