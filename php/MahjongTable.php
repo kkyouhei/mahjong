@@ -4,42 +4,38 @@ require_once "Tile.php";
 
 class MahjongTable
 {
-	private $playerOne = array();
-	private $playerTwo = array();
+	// 一山の枚数
+	const ONE_MOUNTAIN_COUNT = 34;
 
 	// マンピンソー字の順にIDとSRC属性の中身を保持する配列
 	var $tile = array();
 
+	// Tileクラスのオブジェクトを保持する変数 
+	var $tileObject;
+
 	function __construct(){
-		new Tile($this);
+		$this->tileObject	= new Tile($this);
 	}
 
-	public function makeHand(){
-		$tile = parent::getTile(); 
-
-		for($i=0 ; $i<34 ; $i++){
-			$idx = rand(0, count($tile)-1);
-			$aTile = array_splice($tile, $idx, 1); 
-			array_push($this->playerOne, $aTile[0]);
+	/**
+	 *	引数の$tileフィールドに34個の要素を持つ配列をセット
+	 *
+	 *	@param Playerクラス
+	 */
+	private function makeMountain($playerObject){
+		for($i=0 ; $i<self::ONE_MOUNTAIN_COUNT ; $i++){
+			array_push($this->spliceTile(), $playerObject->tile);
 		}
-
-		for($i=0 ; $i<34 ; $i++){
-			$idx = rand(0, count($tile)-1);
-			$aTile = array_splice($tile, $idx, 1); 
-			array_push($this->playerTwo, $aTile[0]);
-		}
-		// thank you for http://mastermathematics.blog28.fc2.com/blog-entry-79.html
 	}
 
-	public function getPlayerTile($player=1){
-		if($player=1){
-			return $this->playerOne;
-		}elseif($player=2){
-			return $this->playerTwo;
-		}else{
-			return array();
-		}
+	/**
+	 *	136個の配列の中からランダムに一牌を返す
+	 *
+	 *	@return $tile配列の1要素を返す
+	 */
+	private function spliceTile()
+	{
+		$tileIndex = $this->tileObject->getRandomIndexTile($this->tile);
+		return array_splice($this->tile, $tileIndex, 1); 
 	}
 }
-
-new MahjongTable();
