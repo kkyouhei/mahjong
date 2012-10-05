@@ -13,8 +13,10 @@ class MahjongTable
 	// Tileクラスのオブジェクトを保持する変数 
 	var $tileObject;
 
-	function __construct(){
-		$this->tileObject	= new Tile($this);
+	function __construct($playerObject)
+	{
+		$this->tileObject = new Tile($this);
+		$this->makeMountain($playerObject);
 	}
 
 	/**
@@ -22,9 +24,10 @@ class MahjongTable
 	 *
 	 *	@param Playerクラス
 	 */
-	private function makeMountain($playerObject){
+	private function makeMountain($playerObject)
+	{
 		for($i=0 ; $i<self::ONE_MOUNTAIN_COUNT ; $i++){
-			array_push($this->spliceTile(), $playerObject->tile);
+			array_push($playerObject->tile, $this->spliceTile());
 		}
 	}
 
@@ -36,6 +39,7 @@ class MahjongTable
 	private function spliceTile()
 	{
 		$tileIndex = $this->tileObject->getRandomIndexTile($this->tile);
-		return array_splice($this->tile, $tileIndex, 1); 
+		$aTile = array_splice($this->tile, $tileIndex, 1); 
+		return $aTile[0]; 
 	}
 }

@@ -42,4 +42,15 @@ class Tile
 		return $i; 
 	}
 
+	/**
+	 * 0~$tile配列の要素数-1でランダムな値を返す
+	 *
+	 * @param $tile 牌を保持する配列
+	 * @return 0~$tile配列の要素数-1でランダムな値を返す
+	 */
+	public function getRandomIndexTile($tile)
+	{
+		return rand(0, count($tile)-1);
+	}
+
 }

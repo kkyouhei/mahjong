@@ -6,6 +6,9 @@ require_once 'Tile.php';
 
 class TileTest extends PHPUnit_Framework_TestCase
 {
+
+	var $tile;
+
 	public function testGetIndexTileIdTail_追加を開始する添字がreturnされてる？()
 	{
 		$tile = array();
@@ -39,4 +42,15 @@ class TileTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals(2, $tileObject->getIndexTileSrcTail($tile));
 
 	}
+
+	/*
+	public function testGetRandomIndexTile配列の要素数引く1の値返って？()
+	{
+		new Tile($this);
+		$index = $tileObject->getRandomIndexTile($this->tile);
+		$this->assertSelectCount('', array('>=' => 0, '<=' => count($this->tile-1)), $index);	
+				
+	}
+	 */
+
 }

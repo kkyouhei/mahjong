@@ -1,53 +1,66 @@
-var Tile = function(params){
-	var width = params.width;
-	var height = params.height;
-	var imageWidth = params.imageWidth;
-	var $element = params.$drawTarget.append('<div id="test"></div>');
+var tile = function(src, id, width, height, $drawtarget){
+	var $element = $drawtarget.append('<div id=' + id  +'></div>');
 	$element.css({
 		position: 'absolute',
 		width: width,
-		height: height,
-		backgroundImage: 'url(' + params.images + ')'
+		height: height//,
+//		backgroundimage: 'url(' + src + ')'
 	});
-	var elemStyle = $element[0].style;
+//	var elemstyle = $element[0].style;
 
 	var that = {
-		draw: function(x, y){
-			elemStyle.left = x + 'px';
-			elemStyle.top = y + 'px';
+		draw: function(x, y, src, id, $drawtarget){
+			$drawtarget.css({
+				position: 'absolute',
+				width: x,
+				height: y,
+				backgroundImage: 'url(' + src + ')',
+			left : 100 + 'px',
+			top : 100 + 'px'
+			});
+			//elemStyle.left = x + 'px';
+			//elemStyle.top = y + 'px';
 		},
 
 		show: function(){
-			elemStyle.display = 'block';
+//			elemStyle.display = 'block';
 		},
 
 		hide: function(){
-			elemStyle.display = 'none';
+//			elemStyle.display = 'none';
 		},
 
 		destroy: function(){
-			$element.remove();
+//			$element.remove();
 		}
 	}; 
 	return that;
 };
 
 function tileCreater(tile){
-	var width = 0;
-	var pai = {};
+	var src;
+	var id;
+	var topLine = 100;
+	var leftLine = 100;
+	var $drawTarget =  $('#myArea');
+	
 	for(var i=0 ; i<tile.length ; i++){
-		var params = {
-			images: './image/' + tile[i] + '.gif',
-			width: width,
-			height: 113,
-			$drawTarget: $('#myArea')
-		};
-		pai[i] = Tile(params);
-		pai[i].draw(34, 34);
-		width = width + 34;
+		src = './image/' + tile[i]['src'] + '.gif';
+		id = tile[i]['id']; 
+
+		var $element = $drawTarget.append('<div id=' + id  +'></div>').find("#" + id);
+		$element.css({
+			width: 80,
+			height: 120,
+			top: topLine,
+			left: leftLine,
+			backgroundImage: 'url(' + src + ')'
+		});
+		topLine = topLine + 100;
+		leftLine = topLine + 100;
 	}
 }
 
 $(document).ready(function(){
-	$.getJSON('./php/Alpinist.php', null, tileCreater);
+	$.getJSON('./php/Main.php', null, tileCreater);
 });

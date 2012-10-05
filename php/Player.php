@@ -1,7 +1,6 @@
 <?php
 
-class Player{
-	private $tile = array();
-
-
+class Player
+{
+	public $tile = array();
 }
