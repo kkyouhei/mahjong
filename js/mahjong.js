@@ -3,7 +3,7 @@ function tileCreater(tile){
 	var id;
 	var topLine = 0;
 	var leftLine = 0;
-	var $drawTarget =  $('#myArea');
+	var $drawTarget =  $('#myMountain');
 	var j = 0;	
 	for(var i=0 ; i<tile.length ; i++){
 		j++;
